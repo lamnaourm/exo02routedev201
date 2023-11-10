@@ -4,19 +4,23 @@ import articles from './ArticlesData'
 
 export default function Article() {
 
-    const {id} = useParams()
+    const { id } = useParams()
 
-    const article = articles.find(a => a.id==id)
-  return (
-    <div className='detail'>
-        <img src={article.image} alt="" />
-        <div>
-            <h1>Titre : {article.title}</h1>
-            <h3>Stock : {article.stock}</h3>
-            <p>description : {article.description}</p>
+    const article = articles.find(a => a.id == id)
+    return (
+        <div >
+            {article ?
+                <div className='detail'>
+                    <img src={article.image} alt="" />
+                    <div>
+                        <h1>Titre : {article.title}</h1>
+                        <h3>Stock : {article.stock}</h3>
+                        <p>description : {article.description}</p>
 
-            <Link to='/home'>To home</Link>
+                        <Link to='/home'>To home</Link>
+                    </div>
+                </div> : <h1>'Article not found !!!'</h1> 
+            }
         </div>
-    </div>
-  )
+    )
 }
